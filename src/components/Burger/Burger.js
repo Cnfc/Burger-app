@@ -1,46 +1,28 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 
-import classes from './BurgerIngredient.css';
+import classes from './Burger.css';
+import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
 
-class BurgerIngredient extends Component {
-    render () {
-        let ingredient = null;
-
-        switch ( this.props.type ) {
-            case ( 'bread-bottom' ):
-                ingredient = <div className={classes.BreadBottom}></div>;
-                break;
-            case ( 'bread-top' ):
-                ingredient = (
-                    <div className={classes.BreadTop}>
-                        <div className={classes.Seeds1}></div>
-                        <div className={classes.Seeds2}></div>
-                    </div>
-                );
-                break;
-            case ( 'meat' ):
-                ingredient = <div className={classes.Meat}></div>;
-                break;
-            case ( 'cheese' ):
-                ingredient = <div className={classes.Cheese}></div>;
-                break;
-            case ( 'bacon' ):
-                ingredient = <div className={classes.Bacon}></div>;
-                break;
-            case ( 'salad' ):
-                ingredient = <div className={classes.Salad}></div>;
-                break;
-            default:
-                ingredient = null;
-        }
-
-        return ingredient;
+const burger = ( props ) => {
+    let transformedIngredients = Object.keys( props.ingredients )
+        .map( igKey => {
+            return [...Array( props.ingredients[igKey] )].map( ( _, i ) => {
+                return <BurgerIngredient key={igKey + i} type={igKey} />;
+            } );
+        } )
+        .reduce((arr, el) => {
+            return arr.concat(el)
+        }, []);
+    if (transformedIngredients.length === 0) {
+        transformedIngredients = <p>Please start adding ingredients!</p>;
     }
-}
-
-BurgerIngredient.propTypes = {
-    type: PropTypes.string.isRequired
+    return (
+        <div className={classes.Burger}>
+            <BurgerIngredient type="bread-top" />
+            {transformedIngredients}
+            <BurgerIngredient type="bread-bottom" />
+        </div>
+    );
 };
 
-export default BurgerIngredient;
+export default burger;

@@ -1,17 +1,27 @@
-import React, {Component} from 'react';
-import Aux from '../../hoc/Aux';
+import React, { Component } from 'react';
 
+import Aux from '../../hoc/Aux';
+import Burger from '../../components/Burger/Burger';
 
 class BurgerBuilder extends Component {
-    state = {  }
-    render() { 
-        return ( 
+
+    state = {
+        ingredients: {
+            salad: 0,
+            bacon: 0,
+            cheese: 0,
+            meat: 0
+        }
+    }
+
+    render () {
+        return (
             <Aux>
-                <div>Burger</div>
-                <div>Build Control</div>
+                <Burger ingredients={this.state.ingredients} />
+                <div>Build Controls</div>
             </Aux>
-         );
+        );
     }
 }
- 
+
 export default BurgerBuilder;
