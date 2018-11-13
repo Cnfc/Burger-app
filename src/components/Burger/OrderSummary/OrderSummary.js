@@ -1,6 +1,8 @@
 import React from 'react';
 
 import Aux from '../../../hoc/Aux';
+import Button from '../../UI/Button/Button';
+
 
 const orderSummary = (props) => {
     
@@ -11,6 +13,8 @@ const orderSummary = (props) => {
                     <span style={{textTransform: 'capitalize'}}>{igKey}</span>: {props.ingredients[igKey]}
                 </li> );
         });
+
+
     
     return( 
         <Aux>
@@ -19,7 +23,9 @@ const orderSummary = (props) => {
             <ul>
                 {ingredientSummary}
             </ul>
-            <p>Continue</p>    
+            
+            <Button btnType='Danger' clicked={props.purchaseCansel}>Cansel</Button>
+            <Button btnType="Success" clicked={props.purchaseContinued}>Continue</Button>    
         </Aux>
     )
 }
