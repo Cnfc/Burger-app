@@ -7,9 +7,6 @@ import Modal from '../../components/UI/Modal/Modal';
 import OrderSummury from '../../components/Burger/OrderSummary/OrderSummary';
 
 
-
-
-
 const INGREDIENT_PRICES = {
     salad: 0.5,
     bacon: 0.5,
@@ -81,9 +78,11 @@ class BurgerBuilder extends Component {
     purchasehandler = () => {
         this.setState({purchasing: true});
     }
+
     purcaseCancelHandler = () => {
         this.setState({purchasing: false});
     }
+
     purchaseContinueHandler = () => {
         alert('You continue');
     }
