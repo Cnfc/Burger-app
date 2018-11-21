@@ -7,9 +7,8 @@ import Modal from '../../components/UI/Modal/Modal';
 import OrderSummury from '../../components/Burger/OrderSummary/OrderSummary';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
-
+ 
 import axios from '../../axios-orders';
-
 
 
 const INGREDIENT_PRICES = {
@@ -28,7 +27,8 @@ class BurgerBuilder extends Component {
         purchasable: false,
         purchasing: false,
         loading: false,
-        error: false
+        error: false,
+        load: false
     }
 
     componentDidMount () {
