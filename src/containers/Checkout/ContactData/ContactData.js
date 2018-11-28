@@ -21,9 +21,8 @@ class ContactData extends Component {
     orderHandler = (event) => {
         event.preventDefault();
         console.log(this.props.ingredients)
-        this.setState({
-                loading: true
-        });
+        this.setState( { loading: true } );
+
         const order = { 
             ingredients: this.props.ingredients,
             price: this.props.price,
@@ -37,15 +36,15 @@ class ContactData extends Component {
             deliveryMethod: 'fastest'
         }
         axios.post('/orders.json', order)
-            .then(res => {
-                console.log(res);
+            .then( responce => {
+                console.log(responce);
                 this.setState( { loading: false } );
                 this.props.history.push('/');
-            })
-            .catch(err => {
-                console.log(err)
+            } )
+            .catch(error => {
+                console.log(error)
                 this.setState( { loading: false } );
-            });
+            } );
     }
 
     render() { 
@@ -58,14 +57,13 @@ class ContactData extends Component {
                 <Button btnType='Success' clicked={this.orderHandler}>ORDER</Button>
             </form>
         );
-        if(this.state.loading) {
+        if ( this.state.loading ) {
             form = <Spinner/>;
         }
         return ( 
             <div className={classes.ContactData}>
                 <h4>Enter your contact Data</h4>
                 {form}
-                
             </div>
         );
     }

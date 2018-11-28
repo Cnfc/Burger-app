@@ -9,7 +9,6 @@ class Modal extends Component {
         return (
             <Aux>
                 <div> 
-                
                     {this.props.children}
                 </div>
             </Aux>
