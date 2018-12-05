@@ -1,1 +1,1 @@
-Burger App with react.
+Burger App with react. (react-roter-dom, redux, firebase, and friends)
